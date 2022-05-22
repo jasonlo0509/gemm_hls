@@ -1,6 +1,8 @@
 Steps:
 1. Change the GNU toolchain version
 	-> scl enable devtoolset-9 tcsh 
+2. Understand the address map naming of U50
+	-> platforminfo -p xilinx_u50_gen3x16_xdma_201920_3
 2. Update CMakeLists.txt:
 	Line 9
 	-> set(MM_PLATFORM "xilinx_u50_gen3x16_xdma_201920_3" CACHE STRING "Platform string for Vitis.")
