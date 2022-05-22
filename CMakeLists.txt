@@ -5,7 +5,8 @@ cmake_minimum_required(VERSION 3.0)
 project(sdaccel_mm)
 
 # Target options 
-set(MM_PLATFORM "xilinx_u250_gen3x16_xdma_3_1_202020_1" CACHE STRING "Platform string for Vitis.")
+# set(MM_PLATFORM "xilinx_u250_gen3x16_xdma_3_1_202020_1" CACHE STRING "Platform string for Vitis.")
+set(MM_PLATFORM "xilinx_u50_gen3x16_xdma_201920_3" CACHE STRING "Platform string for Vitis.")
 set(MM_TARGET_CLOCK "" CACHE STRING "Target clock for kernel (uses default is left empty).")
 set(MM_ENABLE_PROFILING OFF CACHE BOOL "Collect profiling information.")
 set(MM_ENABLE_DEBUGGING OFF CACHE BOOL "Inject debugging cores to design.")
@@ -175,10 +176,17 @@ if(MM_MULT_RESOURCE)
   set(MM_SYNTHESIS_FLAGS "${MM_SYNTHESIS_FLAGS} -DMM_MULT_RESOURCE=${MM_MULT_RESOURCE}") 
 endif() 
 
+#if(MM_TWO_DIMMS)
+#  set(MM_PORT_MAPPING m_axi_gmem0:DDR[0] m_axi_gmem1:DDR[1] m_axi_gmem2:DDR[1])
+#else()
+#  set(MM_PORT_MAPPING m_axi_gmem0:DDR[1] m_axi_gmem1:DDR[1] m_axi_gmem2:DDR[1])
+#endif()
+
+# update for U50
 if(MM_TWO_DIMMS)
-  set(MM_PORT_MAPPING m_axi_gmem0:DDR[0] m_axi_gmem1:DDR[1] m_axi_gmem2:DDR[1])
+  set(MM_PORT_MAPPING m_axi_gmem0:HBM[0] m_axi_gmem1:HBM[1] m_axi_gmem2:HBM[1])
 else()
-  set(MM_PORT_MAPPING m_axi_gmem0:DDR[1] m_axi_gmem1:DDR[1] m_axi_gmem2:DDR[1])
+  set(MM_PORT_MAPPING m_axi_gmem0:HBM[1] m_axi_gmem1:HBM[1] m_axi_gmem2:HBM[1])
 endif()
 
 # Hardware kernel
