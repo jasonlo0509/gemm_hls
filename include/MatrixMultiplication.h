@@ -74,7 +74,7 @@ constexpr unsigned long kInnerTilesN = kOuterTileSizeN / kInnerTileSizeN;
 static_assert(kOuterTileSizeN % kInnerTileSizeN == 0,
               "Outer tile size must be divisable by the inner tile size.");
 
-constexpr unsigned long kInnerTilesM = kOuterTileSizeM / kComputeTileSizeM;
+constexpr unsigned long kInnerTilesM = kOuterTileSizeM / kComputeTileSizeM; // 256 / 1
 static_assert(kOuterTileSizeM % kComputeTileSizeM == 0,
               "Outer tile size must be divisable by compute tile size in M.");
 
