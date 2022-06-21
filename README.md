@@ -2,7 +2,7 @@ Quicklook
 =============================================
 1. Final: contains the details of this project
 2. Proposal: details about the paper
-3. readme_u50.txt: contains the steps that should be done before cmake
+3. readme_u50.txt: contains the steps that should be done before CMake
 4. other files: codes and files that you can directly use on U50 board
 
 Scalable matrix matrix multiplication on FPGA
